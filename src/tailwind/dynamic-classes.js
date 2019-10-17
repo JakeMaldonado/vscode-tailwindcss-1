@@ -3,167 +3,167 @@ const _ = require('lodash')
 async function generateDynamicClasses(config) {
   const backgroundColors = _.map(
     config.backgroundColors,
-    (colorHash, colorName) => `bg-${colorName}`
+    (colorHash, colorName) => `tw-bg-${colorName}`
   )
 
   const backgroundSize = _.map(
     config.backgroundSize,
-    (sizeValue, sizeName) => `bg-${sizeName}`
+    (sizeValue, sizeName) => `tw-bg-${sizeName}`
   )
 
   const borderColors = _.map(
     config.borderColors,
-    (colorHash, colorName) => `border-${colorName}`
+    (colorHash, colorName) => `tw-border-${colorName}`
   )
 
   const fontColors = _.map(
     config.textColors,
-    (colorHash, colorName) => `text-${colorName}`
+    (colorHash, colorName) => `tw-text-${colorName}`
   )
 
   const fontFamilies = _.map(
     config.fonts,
-    (fonts, fontName) => `font-${fontName}`
+    (fonts, fontName) => `tw-font-${fontName}`
   )
 
   const widths = _.map(
     config.width,
-    (widthValue, widthName) => `w-${widthName}`
+    (widthValue, widthName) => `tw-w-${widthName}`
   )
 
   const minWidths = _.map(
     config.minWidth,
-    (widthValue, widthName) => `min-w-${widthName}`
+    (widthValue, widthName) => `tw-min-w-${widthName}`
   )
 
   const maxWidths = _.map(
     config.maxWidth,
-    (widthValue, widthName) => `max-w-${widthName}`
+    (widthValue, widthName) => `tw-max-w-${widthName}`
   )
 
   const heights = _.map(
     config.height,
-    (heightValue, heightName) => `h-${heightName}`
+    (heightValue, heightName) => `tw-h-${heightName}`
   )
 
   const minHeights = _.map(
     config.minHeight,
-    (heightValue, heightName) => `min-h-${heightName}`
+    (heightValue, heightName) => `tw-min-h-${heightName}`
   )
 
   const maxHeights = _.map(
     config.maxHeight,
-    (heightValue, heightName) => `max-h-${heightName}`
+    (heightValue, heightName) => `tw-max-h-${heightName}`
   )
 
   const leading = _.map(
     config.leading,
-    (leadingValue, leadingName) => `leading-${leadingName}`
+    (leadingValue, leadingName) => `tw-leading-${leadingName}`
   )
 
   const tracking = _.map(
     config.tracking,
-    (trackingValue, trackingName) => `tracking-${trackingName}`
+    (trackingValue, trackingName) => `tw-tracking-${trackingName}`
   )
 
   const opacity = _.map(
     config.opacity,
-    (opacityValue, opacityName) => `opacity-${opacityName}`
+    (opacityValue, opacityName) => `tw-opacity-${opacityName}`
   )
 
   const fill = _.map(
     config.svgFill,
-    (fillValue, fillName) => `fill-${fillName}`
+    (fillValue, fillName) => `tw-fill-${fillName}`
   )
 
   const stroke = _.map(
     config.svgStroke,
-    (strokeValue, strokeName) => `stroke-${strokeName}`
+    (strokeValue, strokeName) => `tw-stroke-${strokeName}`
   )
 
   const zIndex = _.map(
     config.zIndex,
-    (zIndexValue, zIndexName) => `z-${zIndexName}`
+    (zIndexValue, zIndexName) => `tw-z-${zIndexName}`
   )
 
   const shadows = _.map(
     config.shadows,
-    (shadowValue, shadowName) => `shadow-${shadowName}`
+    (shadowValue, shadowName) => `tw-shadow-${shadowName}`
   )
 
   const textSizes = _.map(
     config.textSizes,
-    (value, modifier) => `text-${modifier}`
+    (value, modifier) => `tw-text-${modifier}`
   )
 
   const fontWeights = _.map(
     config.fontWeights,
-    (value, modifier) => `font-${modifier}`
+    (value, modifier) => `tw-font-${modifier}`
   )
 
   const defaultBorderRadius = [
-    'rounded',
-    'rounded-t',
-    'rounded-r',
-    'rounded-b',
-    'rounded-l',
-    'rounded-tl',
-    'rounded-tr',
-    'rounded-br',
-    'rounded-bl	'
+    'tw-rounded',
+    'tw-rounded-t',
+    'tw-rounded-r',
+    'tw-rounded-b',
+    'tw-rounded-l',
+    'tw-rounded-tl',
+    'tw-rounded-tr',
+    'tw-rounded-br',
+    'tw-rounded-bl	'
   ]
 
   const borderRadius = _.flatMap(
-    _.omit(config.borderRadius, 'default'),
+    _.omit(config.borderRadius, 'tw-default'),
     (value, modifier) => [
-      `rounded-${modifier}`,
-      `rounded-t-${modifier}`,
-      `rounded-r-${modifier}`,
-      `rounded-b-${modifier}`,
-      `rounded-l-${modifier}`,
-      `rounded-tl-${modifier}`,
-      `rounded-tr-${modifier}`,
-      `rounded-br-${modifier}`,
-      `rounded-bl-${modifier}`
+      `tw-rounded-${modifier}`,
+      `tw-rounded-t-${modifier}`,
+      `tw-rounded-r-${modifier}`,
+      `tw-rounded-b-${modifier}`,
+      `tw-rounded-l-${modifier}`,
+      `tw-rounded-tl-${modifier}`,
+      `tw-rounded-tr-${modifier}`,
+      `tw-rounded-br-${modifier}`,
+      `tw-rounded-bl-${modifier}`
     ]
   )
 
   const borders = _.flatMap(config.borderWidths, (value, modifier) => [
-    `border-${modifier}`,
-    `border-t-${modifier}`,
-    `border-r-${modifier}`,
-    `border-b-${modifier}`,
-    `border-l-${modifier}`
+    `tw-border-${modifier}`,
+    `tw-border-t-${modifier}`,
+    `tw-border-r-${modifier}`,
+    `tw-border-b-${modifier}`,
+    `tw-border-l-${modifier}`
   ])
 
   const margin = _.flatMap(config.margin, (value, modifier) => [
-    `m-${modifier}`,
-    `my-${modifier}`,
-    `mx-${modifier}`,
-    `mt-${modifier}`,
-    `mr-${modifier}`,
-    `mb-${modifier}`,
-    `ml-${modifier}`
+    `tw-m-${modifier}`,
+    `tw-my-${modifier}`,
+    `tw-mx-${modifier}`,
+    `tw-mt-${modifier}`,
+    `tw-mr-${modifier}`,
+    `tw-mb-${modifier}`,
+    `tw-ml-${modifier}`
   ])
 
   const negativeMargin = _.flatMap(config.margin, (value, modifier) => [
-    `-m-${modifier}`,
-    `-my-${modifier}`,
-    `-mx-${modifier}`,
-    `-mt-${modifier}`,
-    `-mr-${modifier}`,
-    `-mb-${modifier}`,
-    `-ml-${modifier}`
+    `tw--m-${modifier}`,
+    `tw--my-${modifier}`,
+    `tw--mx-${modifier}`,
+    `tw--mt-${modifier}`,
+    `tw--mr-${modifier}`,
+    `tw--mb-${modifier}`,
+    `tw--ml-${modifier}`
   ])
 
   const padding = _.flatMap(config.padding, (value, modifier) => [
-    `p-${modifier}`,
-    `py-${modifier}`,
-    `px-${modifier}`,
-    `pt-${modifier}`,
-    `pr-${modifier}`,
-    `pb-${modifier}`,
-    `pl-${modifier}`
+    `tw-p-${modifier}`,
+    `tw-py-${modifier}`,
+    `tw-px-${modifier}`,
+    `tw-pt-${modifier}`,
+    `tw-pr-${modifier}`,
+    `tw-pb-${modifier}`,
+    `tw-pl-${modifier}`
   ])
 
   return _.concat(

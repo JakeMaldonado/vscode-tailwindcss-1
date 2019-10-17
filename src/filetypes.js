@@ -31,6 +31,13 @@ const htmlPatterns = [
   }
 ]
 
+const hamlPatterns = [
+  {
+    regex: emmetRegex,
+    splitCharacter: '.'
+  }
+]
+
 const stylesPatterns = [
   {
     regex: applyRegex,
@@ -54,6 +61,10 @@ const fileTypes = [
   {
     extension: 'html',
     patterns: htmlPatterns
+  },
+  {
+    extension: 'haml',
+    patterns: hamlPatterns
   },
   {
     extension: 'php',
