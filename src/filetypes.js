@@ -63,6 +63,10 @@ const fileTypes = [
     patterns: htmlPatterns
   },
   {
+    extension: 'emblem',
+    patterns: hamlPatterns
+  },
+  {
     extension: 'haml',
     patterns: hamlPatterns
   },
