@@ -1,9 +1,11 @@
 // Borrowed from https://github.com/zignd/HTML-CSS-Class-Completion/blob/master/src/extension.ts
 
 const classRegex = /class=["|']([\w- ]*$)/
+const hamlClassRegex = /class: ["|']([\w- ]*$)/
 const classNameRegex = /className=["|']([\w- ]*$)/
 const applyRegex = /@apply ([\.\w- ]*$)/
 const emmetRegex = /(?=\.)([\w-\. ]*$)/
+const componentRegex = /^\s*(?=\=)([\w\= ]*)/
 
 const jsPatterns = [
   {
@@ -35,6 +37,14 @@ const hamlPatterns = [
   {
     regex: emmetRegex,
     splitCharacter: '.'
+  },
+  {
+    regex: hamlClassRegex,
+    splitCharacter: ' '
+  },
+  {
+    regex: componentRegex,
+    splitCharacter: '='
   }
 ]
 

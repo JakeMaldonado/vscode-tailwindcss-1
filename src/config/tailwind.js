@@ -26,6 +26,8 @@ const opacity = require('./opacity');
 const svgFill = require('./svg-fill');
 const svgStroke = require('./svg-stroke');
 
+// TODO Make the objects in the export arrays
+
 exports.default = {
   colors,
   screens,

@@ -10,7 +10,7 @@ async function generateClasses() {
   const staticClasses = tailwindStaticClasses
 
   // Find configuration file in the workspace
-  const dynamicClasses = await generateDynamicClasses(twConfig)
+  const dynamicClasses = await generateDynamicClasses(twConfig.default)
 
   // Return all classes, combined
   return _.concat(staticClasses, dynamicClasses)

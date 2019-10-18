@@ -13,8 +13,11 @@ const generateClasses = require('./tailwind')
 
 const fileTypes = require('./filetypes')
 
+const { componentPattern, componentItems } = require('./config/ui_compnents')
+
 let classes
-const triggerCharacters = ['"', "'", ' ', '.']
+let components = componentItems
+const triggerCharacters = ['=', '"', "'", ' ', '.']
 
 async function activate(context) {
   // Generate classes and set them on activation
@@ -40,7 +43,7 @@ async function activate(context) {
   })
 
   const disposables = _.flatMap(fileTypes, ({ extension, patterns }) => {
-    return _.map(patterns, pattern =>
+    return _.map(patterns, pattern => {
       languages.registerCompletionItemProvider(
         extension,
         {
@@ -52,15 +55,17 @@ async function activate(context) {
             // Get text in current line
             const textInCurrentLine = document.getText(range)
 
-            const classesInCurrentLine = textInCurrentLine
+            const matchesInCurrentLine = textInCurrentLine
               .match(pattern.regex)[1]
               .split(pattern.splitCharacter)
 
-            return _.chain(classes)
-              .difference(classesInCurrentLine)
-              .map(classItem => {
+            const toFill = pattern.regex.toString() === componentPattern.toString() ? components : classes
+
+            return _.chain(toFill)
+              .difference(matchesInCurrentLine)
+              .map(matchItem => {
                 return new CompletionItem(
-                  classItem,
+                  matchItem,
                   CompletionItemKind.Variable
                 )
               })
@@ -69,7 +74,7 @@ async function activate(context) {
         },
         ...triggerCharacters
       )
-    )
+    })
   })
 
   context.subscriptions.push(disposables)
