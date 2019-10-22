@@ -13,11 +13,24 @@ const generateClasses = require('./tailwind')
 
 const fileTypes = require('./filetypes')
 
-const { componentPattern, componentItems } = require('./config/ui_compnents')
+const { componentPatterns, hamlComponentItems, emblemComponentItems, hbComponentItems } = require('./config/ui_compnents')
 
 let classes
-let components = componentItems
-const triggerCharacters = ['=', '"', "'", ' ', '.']
+const triggerCharacters = ['=', '{', '"', "'", ' ', '.']
+
+const sortAlphanumeric = (a, b) => ('' + a.attr).localeCompare(b.attr)
+
+function checkForComponents(extension, classes, pattern) {
+  if(componentPatterns.includes(pattern.regex.toString())) {
+    componentsObj = {
+      haml: hamlComponentItems,
+      emblem: emblemComponentItems,
+      hbs: hbComponentItems
+    }
+    return componentsObj[extension]
+  }
+  return classes.sort(sortAlphanumeric)
+}
 
 async function activate(context) {
   // Generate classes and set them on activation
@@ -48,6 +61,7 @@ async function activate(context) {
         extension,
         {
           provideCompletionItems: (document, position) => {
+            debugger
             // Get range including all characters in the current line
             //  till the current position
             const range = new Range(new Position(position.line, 0), position)
@@ -58,8 +72,8 @@ async function activate(context) {
             const matchesInCurrentLine = textInCurrentLine
               .match(pattern.regex)[1]
               .split(pattern.splitCharacter)
-
-            const toFill = pattern.regex.toString() === componentPattern.toString() ? components : classes
+            
+            const toFill = checkForComponents(extension, classes, pattern)
 
             return _.chain(toFill)
               .difference(matchesInCurrentLine)

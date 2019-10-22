@@ -6,6 +6,7 @@ const classNameRegex = /className=["|']([\w- ]*$)/
 const applyRegex = /@apply ([\.\w- ]*$)/
 const emmetRegex = /(?=\.)([\w-\. ]*$)/
 const componentRegex = /^\s*(?=\=)([\w\= ]*)/
+const hbsRegex = /({{#|{{u).*$/
 
 const jsPatterns = [
   {
@@ -20,6 +21,13 @@ const jsPatterns = [
     regex: emmetRegex,
     splitCharacter: '.'
   }
+]
+
+const hbsPatterns = [
+  {
+    regex: hbsRegex,
+    splitCharacter: '{'
+  } 
 ]
 
 const htmlPatterns = [
@@ -71,6 +79,10 @@ const fileTypes = [
   {
     extension: 'html',
     patterns: htmlPatterns
+  },
+  {
+    extension: 'hbs',
+    patterns: hbsPatterns
   },
   {
     extension: 'emblem',
