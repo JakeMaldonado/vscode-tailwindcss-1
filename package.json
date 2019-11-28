@@ -24,14 +24,14 @@
     "test": "node ./node_modules/vscode/bin/test"
   },
   "devDependencies": {
-    "vscode": "^1.1.6"
+    "vscode": "^1.1.36"
   },
   "prettier": {
     "semi": false,
     "singleQuote": true
   },
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.15"
   },
   "license": "MIT",
   "author": {
