@@ -61,7 +61,6 @@ async function activate(context) {
         extension,
         {
           provideCompletionItems: (document, position) => {
-            debugger
             // Get range including all characters in the current line
             //  till the current position
             const range = new Range(new Position(position.line, 0), position)
