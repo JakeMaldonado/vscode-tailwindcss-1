@@ -3,10 +3,10 @@
   "displayName": "Tailwind CSS Autocomplete for Visual Studio Code",
   "description": "",
   "version": "0.1.0",
-  "publisher": "sidharthachatterjee",
+  "publisher": "JakeMaldonado",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sidharthachatterjee/vscode-tailwindcss"
+    "url": "https://github.com/jakemaldonado/vscode-tailwindcss-1"
   },
   "icon": "logo.png",
   "engines": {
@@ -35,8 +35,8 @@
   },
   "license": "MIT",
   "author": {
-    "name": "Sidhartha Chatterjee",
-    "url": "http://github.com/sidharthachatterjee"
+    "name": "Jake Maldonado",
+    "url": "http://github.com/JakeMaldonado"
   },
   "keywords": [
     "vscode-extension",
